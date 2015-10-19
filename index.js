@@ -1,1 +1,1 @@
-module.exports = require('./lib/range')
+module.exports = require('./lib/xpath')
