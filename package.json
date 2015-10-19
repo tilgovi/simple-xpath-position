@@ -1,7 +1,7 @@
 {
-  "name": "xpath-range",
-  "version": "0.0.6",
-  "description": "A (Browser) Range implementation / wrapper with XPath features, extracted from Annotator",
+  "name": "simple-xpath-position",
+  "version": "1.0.0",
+  "description": "Create and evaluate simple XPath position expressions.",
   "main": "index.js",
   "scripts": {
     "test": "eslint src && karma start --single-run",
@@ -9,14 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/openannotation/xpath-range.git"
+    "url": "git+https://github.com/tilgovi/simple-xpath-position.git"
   },
-  "author": "",
-  "license": "(MIT OR GPL-3.0)",
+  "keywords": [
+    "xpath"
+  ],
+  "author": "The Annotator project contributors",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/openannotation/xpath-range/issues"
+    "url": "https://github.com/tilgovi/simple-xpath-position/issues"
   },
-  "homepage": "https://github.com/openannotation/xpath-range",
+  "homepage": "https://github.com/tilgovi/simple-xpath-position#readme",
   "dependencies": {
     "get-document": "^1.0.0"
   },
