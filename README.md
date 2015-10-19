@@ -1,18 +1,20 @@
-# XPath Range [![Coverage Status](https://coveralls.io/repos/openannotation/xpath-range/badge.svg?branch=master&service=github)](https://coveralls.io/github/openannotation/xpath-range?branch=master)
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/xpath-range.svg)](https://saucelabs.com/u/xpath-range)
+# Simple XPath Position
 
-This module is for describing and resolving a DOM `Range` using XPath.
+[![Build Status](https://travis-ci.org/tilgovi/simple-xpath-position.svg?branch=master)](https://travis-ci.org/tilgovi/simple-xpath-position)
+[![Coverage Status](https://coveralls.io/repos/tilgovi/simple-xpath-position/badge.svg?branch=master&service=github)](https://coveralls.io/github/tilgovi/simple-xpath-position?branch=master)
+
+Create and evaluate simple XPath position expressions.
 
 ## Installation
 
 Using npm:
 
-    npm install xpath-range
+    npm install simple-xpath-position
 
 ## Usage
 
-The module provides functions for converting to and from DOM Range objects
-using a combination of XPath expressions and text offsets.
+The module provides functions for describing and locating a DOM Node using
+an XPath expression.
 
 The presence of a working XPath evaluator is not strictly required. Without it,
 the library will only support XPath expressions that use a child axis and
@@ -22,36 +24,30 @@ consume an expression like `/html/body/article/p[3]`.
 
 ### API
 
-#### `fromRange(range, [root])`
+#### `fromNode(node, [root])`
 
-Convert a `Range` to a pair of XPath expressions and offsets.
+Convert a `Node` to an XPath expression.
 
-If the optional parameter `root` is supplied, the computed XPath expressions
+If the optional parameter `root` is supplied, the computed XPath expression
 will be relative to it.
 
-Returns an object with the following properties:
+Returns a string.
 
-  - start
-  - startOffset
-  - end
-  - endOffset
+#### `toNode(path, [root])`
 
-#### `toRange(start, startOffset, end, endOffset, [root])`
+Locate a single `Node` that matches the given XPath expression.
 
-Construct a `Range` from the given XPath expressions and offsets.
-
-If the optional parameter `root` is supplied, the XPath expressions are
+If the optional parameter `root` is supplied, the XPath expression is
 evaluated as relative to it.
 
-Returns a `Range` object.
+Returns a `Node` or `null`.
 
 ## Compatibility
 
-This library should work with any browser implementing basic `Range` support.
+This library should work with any browser.
 
 ### Internet Explorer version 8
 
-- Basic support can be achieved with the [rangy][] shim.
 - There is no support for namespaces in X(HT)ML documents (issue #17).
 
 ## Community
@@ -75,5 +71,3 @@ You can run the command-line test suite by executing `npm test`.
 To run the test suite, install the karma test runner with the command
 `npm install -g karma-cli` and then run `karma start`. Karma will print
 instructions for debugging the tests in a browser.
-
-  [rangy]: https://github.com/timdown/rangy "rangy"
