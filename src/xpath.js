@@ -20,7 +20,7 @@ const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml'
  * @returns {string}
  */
 export function fromNode(node, root = document) {
-  let path = '/';
+  let path = '/'
   while (node !== root) {
     if (!node) {
       let message = 'The supplied node is not contained by the root node.'
@@ -50,8 +50,8 @@ export function fromNode(node, root = document) {
 export function toNode(path, root = document, resolver = null) {
   // Check for resolver but no root argument.
   if (typeof(root) === 'function') {
-    resolver = root;
-    root = document;
+    resolver = root
+    root = document
   }
 
   // Make the path relative to the root, if not the document.
