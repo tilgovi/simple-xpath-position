@@ -21,7 +21,7 @@ module.exports = function(config) {
       '**/*.html': ['html2js']
     },
     reporters: ['progress', 'saucelabs'],
-    sauceLabs: {testName: 'XPath Range test'},
+    sauceLabs: {testName: 'Simple XPath Position test'},
 
     customLaunchers: {
       'SL_Chrome': {
