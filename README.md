@@ -48,7 +48,7 @@ This library should work with any browser.
 
 ### Internet Explorer version 8
 
-- There is no support for namespaces in X(HT)ML documents (issue #17).
+- There is no support for namespaces in X(HT)ML documents.
 
 ## Community
 
