@@ -65,13 +65,9 @@ export function toNode(path, root = document, resolver = null) {
       let ns = {'_default_': defaultNS}
       return ns[prefix] || documentElement.lookupNamespaceURI(prefix)
     }
-
-    // Add a default prefix to each path part.
-    path = path.replace(/\/(?!\.)([^\/:\(]+)(?=\/|$)/g, '/_default_:$1')
-    return resolve(path, root, resolver)
-  } else {
-    return resolve(path, root, resolver)
   }
+
+  return resolve(path, root, resolver)
 }
 
 
@@ -100,7 +96,9 @@ function nodePosition(node) {
 // Find a single node with XPath `path`
 function resolve(path, root, resolver) {
   try {
-    return platformResolve(path, root, resolver);
+    // Add a default value to each path part lacking a prefix.
+    let nspath = path.replace(/\/(?!\.)([^\/:\(]+)(?=\/|$)/g, '/_default_:$1')
+    return platformResolve(nspath, root, resolver)
   } catch (err) {
     return fallbackResolve(path, root)
   }
