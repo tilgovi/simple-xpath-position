@@ -14,8 +14,12 @@ Using npm:
 
 ## Usage
 
-The module provides functions for describing and locating a DOM Node using
-an XPath expression.
+The module provides functions for describing and locating a DOM Node using an
+XPath expression. It can be used in web browsers via [browserify][browserify]
+and on node when using a JavaScript DOM implementation (e.g. [jsdom][jsdom]).
+
+[browserify]: https://github.com/substack/node-browserify
+[jsdom]: https://github.com/tmpvar/jsdom
 
 The presence of a working XPath evaluator is not strictly required. Without it,
 the library will only support XPath expressions that use a child axis and
