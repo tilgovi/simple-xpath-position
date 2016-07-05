@@ -8,6 +8,10 @@ const FIRST_ORDERED_NODE_TYPE = 9
 // Default namespace for XHTML documents
 const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml'
 
+/**
+ * Document object that will be used as default root.
+ */
+export let globalDocument = typeof window !== 'undefined'? window.document: null;
 
 /**
  * Compute an XPath expression for the given node.
@@ -19,7 +23,7 @@ const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml'
  * @param {Node} [root] The root context for the XPath expression.
  * @returns {string}
  */
-export function fromNode(node, root = document) {
+export function fromNode(node, root = globalDocument) {
   let path = '/'
   while (node !== root) {
     if (!node) {
@@ -47,18 +51,18 @@ export function fromNode(node, root = document) {
  * @param {Node} [root] The root context for the XPath expression.
  * @returns {Node|null} The first matching Node or null if none is found.
  */
-export function toNode(path, root = document, resolver = null) {
+export function toNode(path, root = globalDocument, resolver = null) {
   // Check for resolver but no root argument.
   if (typeof(root) === 'function') {
     resolver = root
-    root = document
+    root = globalDocument
   }
 
   // Make the path relative to the root, if not the document.
-  if (root !== document) path = path.replace(/^\//, './')
+  if (root !== globalDocument) path = path.replace(/^\//, './')
 
   // Make a default resolver.
-  if (resolver === null && document.lookupNamespaceURI) {
+  if (resolver === null && globalDocument && globalDocument.lookupNamespaceURI) {
     let documentElement = getDocument(root).documentElement
     let defaultNS = documentElement.lookupNamespaceURI(null) || HTML_NAMESPACE
     resolver = (prefix) => {
@@ -124,7 +128,7 @@ function fallbackResolve(path, root) {
 
 // Find a single node with XPath `path` using `document.evaluate`.
 function platformResolve(path, root, resolver) {
-  let r = document.evaluate(path, root, resolver, FIRST_ORDERED_NODE_TYPE, null)
+  let r = globalDocument.evaluate(path, root, resolver, FIRST_ORDERED_NODE_TYPE, null)
   return r.singleNodeValue
 }
 
