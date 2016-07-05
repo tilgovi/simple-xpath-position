@@ -16,7 +16,7 @@ Using npm:
 
 The module provides functions for describing and locating a DOM Node using an
 XPath expression. It can be used in web browsers via [browserify][browserify]
-and on node when using a JavaScript DOM implementation (e.g. [jsdom][jsdom]).
+and on node when using JavaScript DOM implementation like [jsdom][jsdom].
 
 [browserify]: https://github.com/substack/node-browserify
 [jsdom]: https://github.com/tmpvar/jsdom
@@ -73,6 +73,10 @@ including any necessary test and documentation updates.
 
 You can run the command-line test suite by executing `npm test`.
 
-To run the test suite, install the karma test runner with the command
-`npm install -g karma-cli` and then run `karma start`. Karma will print
-instructions for debugging the tests in a browser.
+To run the test suite in a browser, install the karma test runner with the
+command `npm install -g karma-cli` and then run `karma start`. Karma will print
+instructions for debugging the tests.
+
+To run tests on node, install mocha test runner with command `npm install -g
+mocha-cli` and then run `mocha --require "babel-core/register" nodetest/*`.
+
