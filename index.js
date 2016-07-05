@@ -1,1 +1,1 @@
-module.exports = require('./src/xpath')
+module.exports = require('./lib/xpath')

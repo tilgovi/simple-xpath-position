@@ -1,4 +1,4 @@
-import * as xpath from '../..'
+import * as xpath from '../../src/xpath'
 
 describe('xpath', test_toNode);
 describe('xpath without document.evaluate', () => {
