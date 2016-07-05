@@ -1,6 +1,6 @@
 import { jsdom } from 'jsdom'
 import { assert } from 'assertive-chai'
-import * as xpath from '../src/xpath'
+import * as xpath from '..'
 
 describe('xpath in nodejs environment', () => {
   let doc = jsdom('<body><div></div><body>')
