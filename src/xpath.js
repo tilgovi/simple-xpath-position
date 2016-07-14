@@ -136,7 +136,7 @@ function platformResolve(path, root, resolver) {
 // Find the child of the given node by name and ordinal position.
 function findChild(node, name, position) {
   for (node = node.firstChild ; node ; node = node.nextSibling) {
-    if (nodeName(node) === name && --position === 0) return node
+    if (nodeName(node) === name && --position === 0) break
   }
-  return null
+  return node
 }

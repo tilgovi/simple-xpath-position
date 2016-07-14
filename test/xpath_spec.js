@@ -67,4 +67,9 @@ function test_toNode() {
     let strong = document.getElementsByTagName('strong')[0]
     assert.strictEqual(node, strong)
   })
+
+  it("should return null when the xpath fails to identify an node", () => {
+    let node = xpath.toNode('/p[3]', fixture.el)
+    assert.isNull(node)
+  })
 }
