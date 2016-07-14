@@ -13,13 +13,16 @@ const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml'
  * Compute an XPath expression for the given node.
  *
  * If the optional parameter `root` is supplied, the computed XPath expression
- * will be relative to it.
+ * will be relative to it. Otherwise, the root element is the root of the
+ * document to which `node` belongs.
  *
  * @param {Node} node The node for which to compute an XPath expression.
  * @param {Node} [root] The root context for the XPath expression.
  * @returns {string}
  */
-export function fromNode(node, root = document) {
+export function fromNode(node, root = null) {
+  root = root || getDocument(node)
+
   let path = '/'
   while (node !== root) {
     if (!node) {
@@ -37,17 +40,16 @@ export function fromNode(node, root = document) {
 /**
  * Find a node using an XPath relative to the given root node.
  *
- * If the optional parameter `root` is supplied, the XPath expressions are
- * evaluated as relative to it.
+ * The XPath expressions are evaluated relative to the Node argument `root`.
  *
  * If the optional parameter `resolver` is supplied, it will be used to resolve
  * any namespaces within the XPath.
  *
  * @param {string} path An XPath String to evaluate.
- * @param {Node} [root] The root context for the XPath expression.
+ * @param {Node} root The root context for the XPath expression.
  * @returns {Node|null} The first matching Node or null if none is found.
  */
-export function toNode(path, root = document, resolver = null) {
+export function toNode(path, root, resolver = null) {
   // Check for resolver but no root argument.
   if (typeof(root) === 'function') {
     resolver = root
@@ -55,11 +57,12 @@ export function toNode(path, root = document, resolver = null) {
   }
 
   // Make the path relative to the root, if not the document.
+  let document = getDocument(root)
   if (root !== document) path = path.replace(/^\//, './')
 
   // Make a default resolver.
-  if (resolver === null && document.lookupNamespaceURI) {
-    let documentElement = getDocument(root).documentElement
+  let documentElement = document.documentElement
+  if (resolver === null && documentElement.lookupNamespaceURI) {
     let defaultNS = documentElement.lookupNamespaceURI(null) || HTML_NAMESPACE
     resolver = (prefix) => {
       let ns = {'_default_': defaultNS}
@@ -124,6 +127,7 @@ function fallbackResolve(path, root) {
 
 // Find a single node with XPath `path` using `document.evaluate`.
 function platformResolve(path, root, resolver) {
+  let document = getDocument(root)
   let r = document.evaluate(path, root, resolver, FIRST_ORDERED_NODE_TYPE, null)
   return r.singleNodeValue
 }

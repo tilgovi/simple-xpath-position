@@ -29,17 +29,19 @@ consume an expression like `/html/body/article/p[3]`.
 
 Convert a `Node` to an XPath expression.
 
-If the optional parameter `root` is supplied, the computed XPath expression
-will be relative to it.
+If the optional parameter `root` is supplied, the computed XPath expression will
+be relative to it.  Otherwise, the root element is the root of the document to
+which `node` belongs.
 
 Returns a string.
 
-#### `toNode(path, [root])`
+#### `toNode(path, root, [resolver])`
 
-Locate a single `Node` that matches the given XPath expression.
+Locate a single `Node` that matches the given XPath expression. The XPath
+expressions are evaluated relative to the Node argument `root`.
 
-If the optional parameter `root` is supplied, the XPath expression is
-evaluated as relative to it.
+If the optional parameter `resolver` is supplied, it will be used to resolve
+any namespaces within the XPath expression.
 
 Returns a `Node` or `null`.
 

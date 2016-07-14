@@ -1,7 +1,10 @@
+import getDocument from 'get-document'
+
 import * as xpath from '../src/xpath'
 
 describe('xpath', test_toNode);
-describe('xpath without document.evaluate', () => {
+describe('xpath without document.evaluate or namespace support', () => {
+  let document = getDocument(fixture.el)
   let evaluate = document.evaluate
   before(() => document.evaluate = undefined)
   after(() => document.evaluate = evaluate)
