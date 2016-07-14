@@ -20,6 +20,11 @@ function test_fromNode() {
   afterEach(() => fixture.cleanup())
 
   describe('#fromNode', () => {
+    it("requires a node argument", () => {
+      let call = () => xpath.fromNode()
+      assert.throws(call, 'required parameter')
+    })
+
     it("generates an XPath expression for an element in the document", () => {
       let pathToFixHTML = '/html[1]/body[1]/div[1]'
 
@@ -61,6 +66,16 @@ function test_toNode() {
   beforeEach(() => fixture.setBase('test/fixtures'))
   beforeEach(() => fixture.load('xpath.html'))
   afterEach(() => fixture.cleanup())
+
+  it("requires a path argument", () => {
+    let call = () => xpath.toNode()
+    assert.throws(call, 'required parameter')
+  })
+
+  it("requires a root argument", () => {
+    let call = () => xpath.toNode(path)
+    assert.throws(call, 'required parameter')
+  })
 
   it("should parse a standard xpath string", () => {
     let node = xpath.toNode(path, fixture.el)

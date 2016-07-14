@@ -21,6 +21,10 @@ const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml'
  * @returns {string}
  */
 export function fromNode(node, root = null) {
+  if (node === undefined) {
+    throw new Error('missing required parameter "node"')
+  }
+
   root = root || getDocument(node)
 
   let path = '/'
@@ -50,10 +54,11 @@ export function fromNode(node, root = null) {
  * @returns {Node|null} The first matching Node or null if none is found.
  */
 export function toNode(path, root, resolver = null) {
-  // Check for resolver but no root argument.
-  if (typeof(root) === 'function') {
-    resolver = root
-    root = document
+  if (path === undefined) {
+    throw new Error('missing required parameter "path"')
+  }
+  if (root === undefined) {
+    throw new Error('missing required parameter "root"')
   }
 
   // Make the path relative to the root, if not the document.
