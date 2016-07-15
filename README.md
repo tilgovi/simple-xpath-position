@@ -30,8 +30,8 @@ consume an expression like `/html/body/article/p[3]`.
 Convert a `Node` to an XPath expression.
 
 If the optional parameter `root` is supplied, the computed XPath expression will
-be relative to it.  Otherwise, the root element is the root of the document to
-which `node` belongs.
+be relative to it.  Otherwise, the root of the document to which `node` belongs
+is used as the root.
 
 Returns a string.
 
