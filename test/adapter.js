@@ -1,3 +1,3 @@
 window.assert = require('assertive-chai').assert;
-require('wgxpath').install();
+require('wicked-good-xpath').install();
 fixture.setBase('test/fixtures');
