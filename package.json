@@ -31,7 +31,6 @@
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
     "babel-preset-es2015": "^6.14.0",
-    "babel-preset-es2015-loose": "^8.0.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "codecov.io": "^0.1.6",
@@ -64,7 +63,12 @@
       "transform-es3-property-literals"
     ],
     "presets": [
-      "es2015-loose"
+      [
+        "es2015",
+        {
+          "loose": true
+        }
+      ]
     ],
     "sourceMaps": "inline"
   },
