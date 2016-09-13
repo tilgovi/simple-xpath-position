@@ -15,7 +15,6 @@ test_fromNode()
 
 
 function test_fromNode() {
-  beforeEach(() => fixture.setBase('test/fixtures'))
   beforeEach(() => fixture.load('xpath.html'))
   afterEach(() => fixture.cleanup())
 
@@ -63,7 +62,6 @@ function test_fromNode() {
 function test_toNode() {
   let path = "/p[2]/strong"
 
-  beforeEach(() => fixture.setBase('test/fixtures'))
   beforeEach(() => fixture.load('xpath.html'))
   afterEach(() => fixture.cleanup())
 
