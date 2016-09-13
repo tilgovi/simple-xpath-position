@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tilgovi/simple-xpath-position.svg?branch=master)](https://travis-ci.org/tilgovi/simple-xpath-position)
 [![NPM Package](https://img.shields.io/npm/v/simple-xpath-position.svg)](https://www.npmjs.com/package/simple-xpath-position)
-[![codecov](https://img.shields.io/codecov/c/github/tilgovi/simple-xpath-position/master.svg)](https://codecov.io/gh/tilgovi/simple-xpath-position)
+[![Coverage](https://img.shields.io/codecov/c/github/tilgovi/simple-xpath-position/master.svg)](https://codecov.io/gh/tilgovi/simple-xpath-position)
 
 Create and evaluate simple XPath position expressions.
 
