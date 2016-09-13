@@ -1,6 +1,6 @@
 {
   "name": "simple-xpath-position",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Create and evaluate simple XPath position expressions.",
   "main": "index.js",
   "scripts": {
