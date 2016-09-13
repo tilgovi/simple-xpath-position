@@ -49,6 +49,9 @@ Returns a `Node` or `null`.
 
 This library should work with any browser.
 
+For better XPath support, consider bundling an implementation such as the
+[Wicked Good XPath](https://github.com/google/wicked-good-xpath) library.
+
 ### Internet Explorer version 8
 
 - There is no support for namespaces in X(HT)ML documents.
